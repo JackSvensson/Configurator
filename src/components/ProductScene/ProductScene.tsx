@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import styles from './ProductScene.module.css';
 
 export default function ProductScene() {
@@ -9,13 +10,14 @@ export default function ProductScene() {
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const animationIdRef = useRef<number | null>(null);
+  
 
   useEffect(() => {
     if (!mountRef.current) return;
 
     // setup scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf0f0f0);
+    scene.background = new THREE.Color(0x000000);
     sceneRef.current = scene;
 
     // setup camera
@@ -39,33 +41,53 @@ export default function ProductScene() {
     mountRef.current.appendChild(renderer.domElement);
 
     // basic rotating cube as placeholder
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    cube.castShadow = true;
-    scene.add(cube);
 
     // lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3.8);
     directionalLight.position.set(5, 5, 5);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 2048;
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // animation loop
-    const animate = () => {
-      animationIdRef.current = requestAnimationFrame(animate);
-      
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+    // Load GLTF model - now using the imported GLTFLoader
+    const loader = new GLTFLoader();
+    
+    loader.load('./3dModels/test1.gltf', 
+      function (gltf: any) {
+        console.log('GLTF loaded:', gltf);
+        
+        gltf.scene.traverse((child: any) => {
+          if (child.isMesh) {
+            console.log(child.name, child.material);
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
 
-      renderer.render(scene, camera);
-    };
-    animate();
+        // Add the model to the scene
+        scene.add(gltf.scene);
+
+        // animation loop
+        const animate = () => {
+        animationIdRef.current = requestAnimationFrame(animate);
+        gltf.scene.rotation.y += 0.01;
+  
+        renderer.render(scene, camera);
+      };
+      animate();
+      
+      },
+      function (progress: any) {
+        console.log('Loading progress:', (progress.loaded / progress.total * 100) + '% loaded');
+      },
+      function (error: any) {
+        console.error('Error loading GLTF:', error);
+      }
+    );
 
 
     // handle window resize
