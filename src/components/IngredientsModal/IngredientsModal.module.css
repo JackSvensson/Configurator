@@ -17,13 +17,13 @@
   .tooltip::after {
     content: '';
     position: absolute;
-    bottom: -60px; /* Start from bottom of tooltip */
-    left: -60px; /* Start from left side of tooltip */
+    bottom: -8px; /* Start from bottom edge of tooltip */
+    left: -8px; /* Start from left edge of tooltip */
     width: 2px;
-    height: 85px; /* Length of diagonal line */
+    height: 65px; /* Length of diagonal line */
     background: rgba(255, 255, 255, 0.8);
     transform-origin: top left;
-    transform: rotate(-45deg); /* Create diagonal line */
+    transform: rotate(225deg); /* Rotate to point down-right toward button */
   }
   
   .header {
@@ -108,9 +108,9 @@
     }
     
     .tooltip::after {
-      bottom: -50px;
-      left: -50px;
-      height: 70px;
+      bottom: -6px;
+      left: -6px;
+      height: 55px;
     }
     
     .header {
@@ -139,8 +139,8 @@
     }
     
     .tooltip::after {
-      bottom: -40px;
-      left: -40px;
-      height: 56px;
+      bottom: -5px;
+      left: -5px;
+      height: 45px;
     }
   }
