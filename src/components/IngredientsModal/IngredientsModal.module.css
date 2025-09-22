@@ -1,0 +1,121 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .modal {
+    width: 100%;
+    max-width: 400px;
+    margin: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 16px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+  
+  .closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #666;
+    transition: all 0.2s ease;
+  }
+  
+  .closeButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+  }
+  
+  .content {
+    padding: 16px 24px 24px 24px;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    margin: 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  
+    .modal {
+      background: #1a1a1a;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+  
+    .header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  
+    .title {
+      color: #fff;
+    }
+  
+    .closeButton {
+      color: #ccc;
+    }
+  
+    .closeButton:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+  
+    .description {
+      color: #ccc;
+    }
+  }
