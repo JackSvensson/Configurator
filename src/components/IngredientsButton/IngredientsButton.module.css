@@ -5,25 +5,25 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 8px; /* Rectangle shape, not circular */
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: 1000;
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.9);
   transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .button:hover .text {
@@ -32,63 +32,63 @@
   text-underline-offset: 2px;
 }
 
-.button.active {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .iconSvg {
-  width: 100%;
-  height: 100%;
-  color: #666;
+  width: 16px;
+  height: 16px;
+  color: #fff;
 }
 
 .text {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #fff;
   line-height: 1;
+  white-space: nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Active state when modal is open - WHITE background with DARK text */
+.button.active {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  color: #333;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.button.active .iconSvg {
+  color: #333;
+}
+
+.button.active .text {
+  color: #333;
+  text-decoration: none;
+}
+
+.button.active:hover .text {
+  text-decoration: none; /* No underline when active */
+}
+
+@media (max-width: 768px) {
   .button {
-    background: rgba(26, 26, 26, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    bottom: 20px;
+    left: 20px;
+    padding: 6px 10px;
+    gap: 6px;
   }
-
-  .button:hover {
-    background: rgba(26, 26, 26, 0.95);
-  }
-
-  .button.active {
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #333;
-  }
-
-  .button.active .iconSvg {
-    color: #666;
-  }
-
-  .button.active .text {
-    color: #333;
-  }
-
-  .iconSvg {
-    color: #ccc;
-  }
-
+  
   .text {
-    color: #fff;
+    font-size: 13px;
+  }
+  
+  .iconSvg {
+    width: 14px;
+    height: 14px;
   }
 }
