@@ -37,6 +37,30 @@ export default function ProductScene() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     rendererRef.current = renderer;
 
+    // environment map
+    const createEnvironmentMap = () => {
+    const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256);
+    const cubeCamera = new THREE.CubeCamera(0.1, 1000, cubeRenderTarget);
+    
+    // gradient environment for color enhancement
+    const envScene = new THREE.Scene();
+    const envGeometry = new THREE.SphereGeometry(500, 32, 32);
+    const envMaterial = new THREE.MeshBasicMaterial({
+      color: new THREE.Color().setHSL(0.2, 0, 0.6),
+      side: THREE.BackSide
+    });
+    const envMesh = new THREE.Mesh(envGeometry, envMaterial);
+    envScene.add(envMesh);
+    
+    cubeCamera.update(renderer, envScene);
+    return cubeRenderTarget.texture;
+  };
+  
+  // After setting up your scene, add this:
+  const envMap = createEnvironmentMap();
+  scene.environment = envMap;
+    
+
     // Append renderer to DOM
     mountRef.current.appendChild(renderer.domElement);
 
@@ -52,6 +76,7 @@ export default function ProductScene() {
     directionalLight.shadow.mapSize.width = 2048;
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
+    
 
     // Load GLTF model - now using the imported GLTFLoader
     const loader = new GLTFLoader();
