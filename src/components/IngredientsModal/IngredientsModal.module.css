@@ -1,29 +1,36 @@
-.tooltip {
+.overlay {
     position: fixed;
-    bottom: 120px; /* Position diagonally up from button */
-    left: 120px; /* Position diagonally left from button */
-    width: 280px;
-    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: transparent;
+  }
+  
+  .tooltip {
+    position: fixed;
+    bottom: 140px;  /* Adjusted for better diagonal */
+    left: 160px;    /* Adjusted for better diagonal */
+    width: 320px;
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
+    border-radius: 0; /* NO ROUNDED CORNERS - RECTANGULAR */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     z-index: 1001;
     animation: tooltipSlideUp 0.3s ease-out;
     color: #fff;
   }
   
-  /* Diagonal connecting line that points to the button */
-  .tooltip::after {
-    content: '';
-    position: absolute;
-    bottom: -8px; /* Start from bottom edge of tooltip */
-    left: -8px; /* Start from left edge of tooltip */
-    width: 2px;
-    height: 65px; /* Length of diagonal line */
-    background: rgba(255, 255, 255, 0.8);
-    transform-origin: top left;
-    transform: rotate(225deg); /* Rotate to point down-right toward button */
+  .lineConnector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
   }
   
   .header {
@@ -31,7 +38,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px 12px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
   
   .title {
@@ -88,29 +95,12 @@
     }
   }
   
-  /* Overlay for click outside to close */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    background: transparent;
-  }
-  
   @media (max-width: 768px) {
     .tooltip {
       bottom: 100px;
       left: 100px;
-      width: calc(100vw - 140px);
+      width: calc(100vw - 120px);
       max-width: 280px;
-    }
-    
-    .tooltip::after {
-      bottom: -6px;
-      left: -6px;
-      height: 55px;
     }
     
     .header {
@@ -136,11 +126,5 @@
       left: 80px;
       width: calc(100vw - 100px);
       max-width: 260px;
-    }
-    
-    .tooltip::after {
-      bottom: -5px;
-      left: -5px;
-      height: 45px;
     }
   }

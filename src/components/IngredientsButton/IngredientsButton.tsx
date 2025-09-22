@@ -1,10 +1,11 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './IngredientsButton.module.css';
 import IngredientsModal from '../IngredientsModal/IngredientsModal';
 
 export default function IngredientsButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = () => {
     setIsModalOpen(true);
@@ -14,9 +15,21 @@ export default function IngredientsButton() {
     setIsModalOpen(false);
   };
 
+  const getButtonPosition = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      return {
+        x: rect.right, // Right edge of button
+        y: rect.top   // Top edge of button
+      };
+    }
+    return { x: 100, y: window.innerHeight - 60 };
+  };
+
   return (
     <>
       <button 
+        ref={buttonRef}
         className={`${styles.button} ${isModalOpen ? styles.active : ''}`}
         onClick={handleClick}
       >
@@ -37,7 +50,12 @@ export default function IngredientsButton() {
         <span className={styles.text}>Ingredients</span>
       </button>
       
-      {isModalOpen && <IngredientsModal onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <IngredientsModal 
+          onClose={handleCloseModal} 
+          buttonPosition={getButtonPosition()}
+        />
+      )}
     </>
   );
 }
