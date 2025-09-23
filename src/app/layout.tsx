@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+
+import { Geist, Geist_Mono, Instrument_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 
@@ -13,6 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],});
+
 export const metadata: Metadata = {
   title: "RINGPOP",
   description: "Ring configurator",
@@ -25,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSans.variable}`}>
         <Navbar />
         {children}
       </body>
