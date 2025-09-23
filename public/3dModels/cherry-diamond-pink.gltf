@@ -49,12 +49,12 @@
 			"name":"Material.004",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.8000785112380981,
-					0.20341049134731293,
-					0,
+					0.7990987300872803,
+					0.012286446057260036,
+					0.01850023865699768,
 					0.8068181872367859
 				],
-				"metallicFactor":0.9159091114997864,
+				"metallicFactor":0,
 				"roughnessFactor":0.5
 			}
 		},
@@ -63,9 +63,9 @@
 			"name":"Blue",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.012285268865525723,
-					0.6307579278945923,
-					0.7011021375656128,
+					0.938680112361908,
+					0.25015830993652344,
+					0.7454044222831726,
 					1
 				],
 				"metallicFactor":0
@@ -225,7 +225,7 @@
 	"buffers":[
 		{
 			"byteLength":42680,
-			"uri":"test1.bin"
+			"uri":"cherry-diamond-pink.bin"
 		}
 	]
 }
