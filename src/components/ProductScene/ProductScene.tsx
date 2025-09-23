@@ -46,7 +46,7 @@ export default function ProductScene() {
     const envScene = new THREE.Scene();
     const envGeometry = new THREE.SphereGeometry(500, 32, 32);
     const envMaterial = new THREE.MeshBasicMaterial({
-      color: new THREE.Color().setHSL(0.2, 0, 0.6),
+      color: new THREE.Color().setHSL(0.2, 0, 0.4),
       side: THREE.BackSide
     });
     const envMesh = new THREE.Mesh(envGeometry, envMaterial);
