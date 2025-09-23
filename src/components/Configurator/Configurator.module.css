@@ -1,3 +1,7 @@
+.configuratorContainer {
+    width: 100%;
+}
+
 .configurator {
     border: 1px solid #fff;
 }
@@ -165,7 +169,8 @@
 }
 
 .totalCost {
-    max-width: 11.875rem;
+    max-width: 15rem;
+    min-width: 10rem;
     padding: 1rem;
     justify-content: center;
     align-items: center;
@@ -183,7 +188,8 @@
 
 .addToCartButton {
     display: flex;
-    max-width: 10.375rem;
+    max-width: 15rem;
+    min-width: 10rem;
     padding: 1.5rem 2rem;
     justify-content: center;
     align-items: center;
@@ -200,13 +206,6 @@
 }
 
 .addToCartButton:hover {
-    display: flex;
-    width: 10.9375rem;
-    padding: 1.5rem 2rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.25rem;
-    border: 1px solid #FFF;
     background: #000;
     color: #FFF;
 
