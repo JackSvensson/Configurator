@@ -81,7 +81,7 @@ export default function ProductScene() {
     // Load GLTF model - now using the imported GLTFLoader
     const loader = new GLTFLoader();
     
-    loader.load('./3dModels/test1.gltf', 
+    loader.load('./3dModels/blueberry-diamond-pink.gltf', 
       function (gltf: any) {
         console.log('GLTF loaded:', gltf);
         
