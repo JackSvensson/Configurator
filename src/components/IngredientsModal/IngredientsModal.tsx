@@ -32,10 +32,8 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
 
   return (
     <>
-      {/* Invisible overlay to detect clicks outside */}
       <div className={styles.overlay} onClick={onClose} />
       
-      {/* SVG for diagonal line */}
       <svg className={styles.lineConnector}>
         <line 
           x1={lineCoords.x1} 
@@ -47,7 +45,6 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
         />
       </svg>
       
-      {/* Tooltip popup */}
       <div className={styles.tooltip} ref={tooltipRef}>
         <div className={styles.header}>
           <h2 className={styles.title}>Ingredients</h2>
