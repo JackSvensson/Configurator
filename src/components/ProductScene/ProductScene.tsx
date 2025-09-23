@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import type { GLTF } from 'three/addons/loaders/GLTFLoader.js';
 import styles from './ProductScene.module.css';
 
 export default function ProductScene() {
@@ -81,17 +82,17 @@ export default function ProductScene() {
     // Load GLTF model - now using the imported GLTFLoader
     const loader = new GLTFLoader();
     
-    loader.load('./3dModels/blueberry-round-blue.gltf', 
-      function (gltf: any) {
+    loader.load('./3dModels/blueberry-diamond-purple.gltf', 
+      function (gltf: GLTF) {
         console.log('GLTF loaded:', gltf);
         
-        gltf.scene.traverse((child: any) => {
-          if (child.isMesh) {
-            console.log(child.name, child.material);
-            child.castShadow = true;
-            child.receiveShadow = true;
-          }
-        });
+        gltf.scene.traverse((child: THREE.Object3D) => {
+            if (child instanceof THREE.Mesh) {
+              console.log(child.name, child.material);
+              child.castShadow = true;
+              child.receiveShadow = true;
+            }
+          });
 
         // Add the model to the scene
         scene.add(gltf.scene);
@@ -106,10 +107,10 @@ export default function ProductScene() {
       animate();
       
       },
-      function (progress: any) {
+      function (progress: ProgressEvent<EventTarget>) {
         console.log('Loading progress:', (progress.loaded / progress.total * 100) + '% loaded');
       },
-      function (error: any) {
+      function (error: unknown) {
         console.error('Error loading GLTF:', error);
       }
     );
