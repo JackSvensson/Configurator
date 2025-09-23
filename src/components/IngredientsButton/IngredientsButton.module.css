@@ -1,0 +1,95 @@
+.button {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 1); /* WHITE BORDER */
+  border-radius: 0; /* NO ROUNDED CORNERS - RECTANGULAR */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 1); /* Keep white border on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover .text {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.iconSvg {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Active state when modal is open - WHITE background with DARK text */
+.button.active {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  color: #333;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.button.active .iconSvg {
+  color: #333;
+}
+
+.button.active .text {
+  color: #333;
+  text-decoration: none;
+}
+
+.button.active:hover .text {
+  text-decoration: none; /* No underline when active */
+}
+
+@media (max-width: 768px) {
+  .button {
+    bottom: 20px;
+    left: 20px;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  
+  .text {
+    font-size: 13px;
+  }
+  
+  .iconSvg {
+    width: 14px;
+    height: 14px;
+  }
+}
