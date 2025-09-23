@@ -1,0 +1,130 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: transparent;
+  }
+  
+  .tooltip {
+    position: fixed;
+    bottom: 140px;  /* Adjusted for better diagonal */
+    left: 160px;    /* Adjusted for better diagonal */
+    width: 320px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0; /* NO ROUNDED CORNERS - RECTANGULAR */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    z-index: 1001;
+    animation: tooltipSlideUp 0.3s ease-out;
+    color: #fff;
+  }
+  
+  .lineConnector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+  
+  .closeButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  
+  .closeButton svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .content {
+    padding: 12px 20px 16px 20px;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+  
+  @keyframes tooltipSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tooltip {
+      bottom: 100px;
+      left: 100px;
+      width: calc(100vw - 120px);
+      max-width: 280px;
+    }
+    
+    .header {
+      padding: 14px 16px 10px 16px;
+    }
+    
+    .title {
+      font-size: 15px;
+    }
+    
+    .content {
+      padding: 10px 16px 14px 16px;
+    }
+    
+    .description {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tooltip {
+      bottom: 80px;
+      left: 80px;
+      width: calc(100vw - 100px);
+      max-width: 260px;
+    }
+  }
