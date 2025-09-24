@@ -37,7 +37,7 @@ export default function ProductScene({ config }: ProductSceneProps) {
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.z = 3;
     cameraRef.current = camera;
 
     // setup renderer
