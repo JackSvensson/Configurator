@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useCart } from '@/context/CartContext';
 import OptionButton from './OptionButton';
 import BlueberryIcon from './icons/Blueberry';
@@ -53,6 +53,7 @@ function calculateTotalCost(config: Config): number {
 }
 
 export default function Configurator({ config, onChange }: ConfiguratorProps) {
+
   const { addToCart } = useCart();
 
   const flavours = [
@@ -72,11 +73,6 @@ export default function Configurator({ config, onChange }: ConfiguratorProps) {
     { id: 'pink', label: 'pink', color: '#F889E0' },
   ];
 
-  const handleSelect = useCallback(
-    (id: string) => onChange({ ...config, flavour: id }),
-    [config, onChange]
-  );
-
   const handleAddToCart = () => {
     const totalCost = calculateTotalCost(config);
     addToCart({
@@ -93,20 +89,21 @@ export default function Configurator({ config, onChange }: ConfiguratorProps) {
     <div className={styles.configuratorContainer}>
       <div className={styles.configurator}>
         <div role="radiogroup" aria-label="Flavours" className={styles.group}>
-          <h2 className={styles.groupTitle}>Flavours</h2>
-          <div className={styles.options}>
-            {flavours.map((f) => (
-              <OptionButton
-                key={f.id}
-                id={f.id}
-                label={f.label}
-                color={f.color}
-                Icon={f.Icon}
-                selected={config.flavour === f.id}
-                onSelect={handleSelect}
-              />
-            ))}
-          </div>
+            <h2 className={styles.groupTitle}>Flavours</h2>
+            <div className={styles.options}>
+        {flavours.map((f) => (
+        <OptionButton
+        key={f.id}
+        id={f.id}
+        label={f.label}
+        color={f.color}
+        Icon={f.Icon}
+        selected={config.flavour === f.id}
+        onSelect={id => onChange({ ...config, flavour: id })}
+        />
+        ))}
+            </div>
+
         </div>
 
         <div role="radiogroup" aria-label="Shapes" className={styles.group}>
