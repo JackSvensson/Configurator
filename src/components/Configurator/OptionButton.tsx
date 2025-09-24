@@ -29,7 +29,9 @@ const iconWrapClass = Icon ? styles.iconWrap : `${styles.iconWrap} ${styles.noIc
       aria-label={label}
       className={`${styles.option} ${selected ? styles.selected : ''}`}
       style={style}
-      onClick={() => onSelect(id)}
+      onClick={() => {
+        console.log('Option selected: ', id)
+        onSelect(id)}}
     >
         <span className={iconWrapClass}>
             {Icon ? (

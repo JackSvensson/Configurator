@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import OptionButton from './OptionButton';
 import BlueberryIcon from './icons/Blueberry';
 import CherryIcon from './icons/Cherry';
@@ -70,12 +70,6 @@ const colors = [
 { id: 'pink', label: 'pink', color: '#F889E0' },
 ];
 
-const handleSelect = useCallback(
-(id: string) => onChange({ ...config, flavour: id }),
-[config, onChange]
-);
-
-
 return (
     <div className={styles.configuratorContainer}>
         <div className={styles.configurator}>
@@ -90,7 +84,7 @@ return (
         color={f.color}
         Icon={f.Icon}
         selected={config.flavour === f.id}
-        onSelect={handleSelect}
+        onSelect={id => onChange({ ...config, flavour: id })}
         />
         ))}
             </div>
