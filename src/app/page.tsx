@@ -14,7 +14,7 @@ export default function Home() {
   };
   return (
     <main>
-      <ProductScene />
+      <ProductScene config={config} />
       <Configurator config={config} onChange={handleConfigChange} />
       <IngredientsButton />
     </main>
