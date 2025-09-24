@@ -12,15 +12,12 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
   const tooltipRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Calculate line coordinates after component mounts
     if (tooltipRef.current) {
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
       
-      // Button top-right corner (button is at bottom-left of screen)
-      const buttonX = buttonPosition?.x || 120; // Right edge of button
-      const buttonY = buttonPosition?.y || (window.innerHeight - 60); // Top edge of button
+      const buttonX = buttonPosition?.x || 120;
+      const buttonY = buttonPosition?.y || (window.innerHeight - 60);
       
-      // Popup bottom-left corner  
       const popupX = tooltipRect.left;
       const popupY = tooltipRect.bottom;
       
@@ -35,10 +32,8 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
 
   return (
     <>
-      {/* Invisible overlay to detect clicks outside */}
       <div className={styles.overlay} onClick={onClose} />
       
-      {/* SVG for diagonal line */}
       <svg className={styles.lineConnector}>
         <line 
           x1={lineCoords.x1} 
@@ -50,7 +45,6 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
         />
       </svg>
       
-      {/* Tooltip popup */}
       <div className={styles.tooltip} ref={tooltipRef}>
         <div className={styles.header}>
           <h2 className={styles.title}>Ingredients</h2>
@@ -68,7 +62,7 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
         </div>
         <div className={styles.content}>
           <p className={styles.description}>
-            Sugar, Glucose syrup, Citric acid, Natural and artificial strawberry flavor, Color (E120)
+            Sugar, Glucose syrup, Citric acid, Natural and artificial orange flavor, Color (E110)
           </p>
         </div>
       </div>
