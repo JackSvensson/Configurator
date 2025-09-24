@@ -16,7 +16,7 @@ export default function Home() {
     <main>
       <ProductScene config={config} />
       <Configurator config={config} onChange={handleConfigChange} />
-      <IngredientsButton />
+      <IngredientsButton currentFlavour={config.flavour} />
     </main>
   );
 }

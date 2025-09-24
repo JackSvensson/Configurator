@@ -5,9 +5,25 @@ import styles from './IngredientsModal.module.css';
 interface IngredientsModalProps {
   onClose: () => void;
   buttonPosition?: { x: number; y: number };
+  currentFlavour: string;
 }
 
-export default function IngredientsModal({ onClose, buttonPosition }: IngredientsModalProps) {
+const flavourIngredients = {
+  orange: {
+    flavourName: 'Orange',
+    colorCode: 'E110'
+  },
+  cherry: {
+    flavourName: 'Cherry',
+    colorCode: 'E127'
+  },
+  blueberry: {
+    flavourName: 'Blueberry',
+    colorCode: 'E163'
+  }
+};
+
+export default function IngredientsModal({ onClose, buttonPosition, currentFlavour }: IngredientsModalProps) {
   const [lineCoords, setLineCoords] = useState({ x1: 0, y1: 0, x2: 0, y2: 0 });
   const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +45,9 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
       });
     }
   }, [buttonPosition]);
+
+  // Get the correct ingredients based on current flavour
+  const ingredients = flavourIngredients[currentFlavour as keyof typeof flavourIngredients] || flavourIngredients.orange;
 
   return (
     <>
@@ -62,7 +81,7 @@ export default function IngredientsModal({ onClose, buttonPosition }: Ingredient
         </div>
         <div className={styles.content}>
           <p className={styles.description}>
-            Sugar, Glucose syrup, Citric acid, Natural and artificial orange flavor, Color (E110)
+            Sugar, Glucose syrup, Citric acid, Natural and artificial {ingredients.flavourName} flavor, Color ({ingredients.colorCode})
           </p>
         </div>
       </div>

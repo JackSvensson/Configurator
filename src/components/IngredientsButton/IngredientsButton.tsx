@@ -3,7 +3,11 @@ import { useState, useRef } from 'react';
 import styles from './IngredientsButton.module.css';
 import IngredientsModal from '../IngredientsModal/IngredientsModal';
 
-export default function IngredientsButton() {
+interface IngredientsButtonProps {
+  currentFlavour: string;
+}
+
+export default function IngredientsButton({ currentFlavour }: IngredientsButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -19,8 +23,8 @@ export default function IngredientsButton() {
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       return {
-        x: rect.right, // Right edge of button
-        y: rect.top   // Top edge of button
+        x: rect.right,
+        y: rect.top
       };
     }
     return { x: 100, y: window.innerHeight - 60 };
@@ -54,6 +58,7 @@ export default function IngredientsButton() {
         <IngredientsModal 
           onClose={handleCloseModal} 
           buttonPosition={getButtonPosition()}
+          currentFlavour={currentFlavour}
         />
       )}
     </>
