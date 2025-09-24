@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-
 import { Geist, Geist_Mono, Instrument_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
+import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
-  subsets: ["latin"],});
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "RINGPOP",
@@ -31,8 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSans.variable}`}>
-        <Navbar />
-        {children}
+        <CartProvider>
+          <Navbar />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

@@ -10,13 +10,13 @@
   
   .tooltip {
     position: fixed;
-    bottom: 140px;  /* Adjusted for better diagonal */
-    left: 160px;    /* Adjusted for better diagonal */
+    bottom: 140px;
+    left: 160px;
     width: 320px;
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0; /* NO ROUNDED CORNERS - RECTANGULAR */
+    border-radius: 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     z-index: 1001;
     animation: tooltipSlideUp 0.3s ease-out;
