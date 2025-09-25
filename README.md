@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 3D Model Configurator
+
+A web-based configurator for a 3D model, built with React and three.js.
+You can interactively change at least three parameters of the model and view the result in real time.
+
+## Features
+
+- 3D object loaded from GLTF
+- Change at least three parameters (e.g. flavour, shape, color)
+- UI design based on Figma handoff
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Usage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Select different options in the configurator to update the 3D model.
+- View ingredient info via the Ingredients button.
+- Add your configured model to the cart.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- React
+- three.js
+- TypeScript
+- CSS Modules
 
-## Learn More
+## Requirements
 
-To learn more about Next.js, take a look at the following resources:
+- Desktop, tablet, or mobile layout
+- 3D object (GLTF or similar)
+- Figma design handoff
+- At least three configurable parameters
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- UI design by digital designers Frida Thornblad, Sofi Svensson and Fanny Gjergji
+- Web development by web developers Jack Svensson, Jennie Westerlund and Josefin Wetterberg
