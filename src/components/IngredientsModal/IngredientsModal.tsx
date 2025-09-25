@@ -34,8 +34,9 @@ export default function IngredientsModal({ onClose, buttonPosition, currentFlavo
       const buttonX = buttonPosition?.x || 120;
       const buttonY = buttonPosition?.y || (window.innerHeight - 60);
       
+      // Connect to the left edge of the tooltip, slightly below the top
       const popupX = tooltipRect.left;
-      const popupY = tooltipRect.bottom;
+      const popupY = tooltipRect.bottom - (tooltipRect.height * 0.3); // Connect to lower part of left edge
       
       setLineCoords({
         x1: buttonX,
