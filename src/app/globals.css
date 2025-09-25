@@ -45,11 +45,11 @@ a {
 
 main {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
   justify-items: center;
   gap: 1.5rem;
   align-self: stretch;
   grid-row-start: 2;
-  padding: 5rem;
+  padding: 7rem;
 }
